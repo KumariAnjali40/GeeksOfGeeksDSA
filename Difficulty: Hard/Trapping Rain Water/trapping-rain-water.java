@@ -24,27 +24,58 @@ class Solution {
     //     max += Math.min(leftMax,rightMax)-arr[i];
     // }
     // return max;
-    int res = 0;
-    int n = arr.length;
+
+    //second method
+    // int res = 0;
+    // int n = arr.length;
     
-    int [] prefixMax = new int [n];
-    int [] suffixMax = new int [n];
+    // int [] prefixMax = new int [n];
+    // int [] suffixMax = new int [n];
     
-      prefixMax[0] = arr[0];
-      suffixMax[n-1] = arr[n-1];
+    //   prefixMax[0] = arr[0];
+    //   suffixMax[n-1] = arr[n-1];
      
      
-     for(int i = 1; i < n; i++){
-         prefixMax[i] = Math.max(prefixMax[i-1], arr[i]);
+    //  for(int i = 1; i < n; i++){
+    //      prefixMax[i] = Math.max(prefixMax[i-1], arr[i]);
+    //  }
+     
+    //  for(int i = n-2; i >= 0; i--){
+    //      suffixMax[i] = Math.max(suffixMax[i+1], arr[i]);
+    //  }
+     
+    //  for(int i = 0; i < n; i++){
+    //      res+= Math.min(prefixMax[i],suffixMax[i])-arr[i];
+    //  }
+    //  return res;
+
+   // third method
+
+ int leftMax = 0;
+     int rightMax = 0;
+     int total = 0;
+     int left = 0;
+     int right = arr.length-1;
+     
+     while(left < right){
+         if(arr[left] <= arr[right]){
+             if (leftMax > arr[left]){
+                 total += leftMax - arr[left];
+
+             } else {
+                 leftMax = arr[left];
+         
+             }
+          left++;
+         } else {
+             if (rightMax > arr[right]){
+                 total += rightMax - arr[right];
+             } else {
+                 rightMax = arr[right];
+             }
+             right--;
+         }
      }
-     
-     for(int i = n-2; i >= 0; i--){
-         suffixMax[i] = Math.max(suffixMax[i+1], arr[i]);
-     }
-     
-     for(int i = 0; i < n; i++){
-         res+= Math.min(prefixMax[i],suffixMax[i])-arr[i];
-     }
-     return res;
+     return total;
     }
 }
