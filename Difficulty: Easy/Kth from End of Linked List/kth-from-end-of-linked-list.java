@@ -12,25 +12,44 @@ class Solution {
     // the end of a linked list.
     int getKthFromLast(Node head, int k) {
         // Your code here
-        Node curr = head;
+        // Node curr = head;
         
-        int length = 0;
-        while (curr != null){
-            curr = curr.next;
-            length++;
-        }
+        // int length = 0;
+        // while (curr != null){
+        //     curr = curr.next;
+        //     length++;
+        // }
         
-        Node temp = head;
+        // Node temp = head;
         
-        if(k > length){
-            return -1;
-        } else {
-            for( int i = 0; i < length-k ; i++){
-                temp = temp.next;
+        // if(k > length){
+        //     return -1;
+        // } else {
+        //     for( int i = 0; i < length-k ; i++){
+        //         temp = temp.next;
+        //     }
+        // }
+        
+        // return temp.data;
+
+        Node mainPt = head;
+        Node refPt = head;
+        
+        for(int i = 1; i < k; i++) {
+            
+            refPt = refPt.next;
+            
+            if(refPt == null){
+                return -1;
             }
         }
         
-        return temp.data;
+        while(refPt.next != null){
+            refPt = refPt.next;
+            mainPt = mainPt.next;
+        }
+        
+        return mainPt.data;
         
     }
 }
