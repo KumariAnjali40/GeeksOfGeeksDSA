@@ -10,21 +10,31 @@ class Solution {
     int getMiddle(Node head) {
         // Your code here.
         
-        Node curr = head;
+       //  Node curr = head;
         
-        int length = 0;
+       //  int length = 0;
         
-        while(curr != null){
-            curr = curr.next;
-            length++;
-        }
+       //  while(curr != null){
+       //      curr = curr.next;
+       //      length++;
+       //  }
         
-        Node temp = head;
+       //  Node temp = head;
         
-       for(int i = 0; i < length/2; i++){
-           temp = temp.next;
-       }
+       // for(int i = 0; i < length/2; i++){
+       //     temp = temp.next;
+       // }
        
-       return temp.data;
+       // return temp.data;
+
+         Node slow = head;
+      Node fast = head;
+      
+      while(fast !=null && fast.next!=null){
+          slow = slow.next;
+          fast = fast.next.next;
+      }
+      
+      return slow.data;
     }
 }
