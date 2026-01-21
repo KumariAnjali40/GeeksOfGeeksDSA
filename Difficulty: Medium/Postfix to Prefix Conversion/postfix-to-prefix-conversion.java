@@ -24,10 +24,10 @@ class Solution {
                     String ch1 = st.pop();
                     String ch2 = st.pop();
                     
-                   newString += ch;
-                   newString += ch2+ch1;
+                  newString += ch;
+                  newString += ch2+ch1;
                    
-                   st.push(newString);
+                  st.push(newString);
                 }
             }
         }
@@ -39,5 +39,6 @@ class Solution {
         }
         
         return finalAns;
+        
     }
 }
