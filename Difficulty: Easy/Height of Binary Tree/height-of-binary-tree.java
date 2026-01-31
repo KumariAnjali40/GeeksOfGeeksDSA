@@ -14,31 +14,16 @@ class Node {
 class Solution {
     public int height(Node root) {
         // code here
-        if(root == null) return 0;
+        int ans = findHeight(root);
         
-        int depth = 0;
+        return ans;
+    }
+    
+    public static int findHeight(Node root){
+        if(root == null) return -1;
+        int a = findHeight(root.left);
+        int b = findHeight(root.right);
         
-        Queue<Node> q = new LinkedList<>();
-        
-        q.add(root);
-        
-        while(!q.isEmpty()){
-            
-            int size = q.size();
-            
-            for(int i = 0; i < size; i++){
-                 Node curr = q.poll();
-                
-                if(curr.left != null) q.add(curr.left);
-                
-                if(curr.right != null) q.add(curr.right);
-            }
-            
-            depth++;
-        }
-        
-        return depth-1;
-        
-        
+        return Math.max(a,b)+1;
     }
 }
